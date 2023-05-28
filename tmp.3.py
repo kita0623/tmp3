@@ -17,3 +17,22 @@ def extract_integer(value):
 result = series.apply(extract_integer)
 
 print(result)
+
+
+
+# DataFrameから特定のユニーク値（リストで指定）を持つレコードを抽出する
+
+data = {
+    '名前': ['Alice', 'Bob', 'Charlie', 'David', 'Alice'],
+    '年齢': [25, 30, 35, 40, 25],
+    '性別': ['女性', '男性', '男性', '男性', '女性']
+}
+
+df = pd.DataFrame(data)
+display(df)
+
+print()
+
+target_values = ['Alice', 'Charlie']  # リストで指定 
+filtered_df = df[df['名前'].isin(target_values)]
+display(filtered_df)
