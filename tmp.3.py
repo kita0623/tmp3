@@ -36,3 +36,21 @@ print()
 target_values = ['Alice', 'Charlie']  # リストで指定 
 filtered_df = df[df['名前'].isin(target_values)]
 display(filtered_df)
+
+
+
+
+import time
+start_time = time.time()
+
+def elapsed_time(t):
+    elapsed_time = int(time.time() - t)
+
+    elapsed_hour = elapsed_time // 3600
+    elapsed_minute = (elapsed_time % 3600) // 60
+    elapsed_second = (elapsed_time % 3600 % 60)
+
+    print(str(elapsed_hour).zfill(2) + ":" + str(elapsed_minute).zfill(2) + ":" + str(elapsed_second).zfill(2))
+
+t_ = time.time()
+elapsed_time(t_)
