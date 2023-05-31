@@ -1,4 +1,7 @@
-import pandas as pd
+df_corr = df_X.corr() 
+plt.figure(figsize=(25, 10))
+sns.heatmap(df_corr, vmax=1, vmin=-1, center=0, annot=True, fmt=".2f", cmap='jet')
+
 
 # サンプルのSeries
 series = pd.Series(['123abc', '456def', '789ghi', '10jklm'])
