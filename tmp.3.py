@@ -57,3 +57,23 @@ def elapsed_time(t):
 
 t_ = time.time()
 elapsed_time(t_)
+
+
+
+# 決定木モデルの作成とフィット
+model = DecisionTreeRegressor()
+model.fit(X_train, y_train)
+
+# 特徴量の重要度の取得
+importance = model.feature_importances_
+
+# 重要度を降順にソート
+feature_importance = pd.Series(importance, index=X.columns).sort_values(ascending=False)
+
+# 特徴量の重要度の可視化
+plt.figure(figsize=(10, 6))
+feature_importance.plot(kind='bar')
+plt.title('Feature Importance')
+plt.xlabel('Features')
+plt.ylabel('Importance')
+plt.show()
