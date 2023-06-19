@@ -1,3 +1,34 @@
+
+# DataFrame1の例
+df1 = pd.DataFrame({
+    'JANcode': ['111', '222', '333', '444', '555'],
+})
+display(df1)
+
+# DataFrame2の例
+df2 = pd.DataFrame({
+    'JANcode_fm': ['111', '333', '555'],
+    'JANcode_to': ['XXX', 'YYY', 'ZZZ']
+})
+display(df2)
+
+# DataFrame1の'JANcode'のユニーク値を取得
+unique_jancode = df1['JANcode'].unique()
+
+# DataFrame2の'JANcode_fm'のユニーク値を取得
+unique_jancode_fm = df2['JANcode_fm'].unique()
+
+# DataFrame1の'JANcode'を置換処理
+df1.loc[df1['JANcode'].isin(unique_jancode_fm), 'JANcode'] = df1['JANcode'].map(
+    df2.set_index('JANcode_fm')['JANcode_to']
+)
+
+# 置換後のDataFrame1を表示
+display(df1)
+
+
+
+
 df_corr = df_X.corr() 
 plt.figure(figsize=(25, 10))
 sns.heatmap(df_corr, vmax=1, vmin=-1, center=0, annot=True, fmt=".2f", cmap='jet')
