@@ -1,4 +1,21 @@
 
+# サンプルデータの読み込み
+data = sns.load_dataset("flights")
+
+# 相関マトリクスの計算
+correlation_matrix = data.corr()
+
+# 相関の低い代表変数の選択
+num_variables_to_keep = 5
+low_correlation_variables = correlation_matrix.abs().sum().nsmallest(num_variables_to_keep).index
+
+# 結果の表示
+print("相関の低い代表変数:")
+print(low_correlation_variables)
+
+
+
+
 # DataFrame1の例
 df1 = pd.DataFrame({
     'JANcode': ['111', '222', '333', '444', '555'],
