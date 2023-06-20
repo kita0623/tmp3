@@ -1,4 +1,31 @@
 
+import pandas as pd
+
+# サンプルのDataFrameを作成
+df = pd.DataFrame({
+    'col1': [1, 2, 3],
+    'col2': [4, 5, 6],
+    'col3_A': [7, 8, 9],
+    'col4_B': [10, 11, 12],
+    'col5_C': [13, 14, 15]
+})
+
+list_A = ['A', 'B']
+
+columns_to_remove = []
+for col in df.columns:
+    for string in list_A:
+        if string in col:
+            columns_to_remove.append(col)
+            break
+
+df.drop(columns=columns_to_remove, inplace=True)
+
+display(df)
+
+
+
+
 # サンプルデータの読み込み
 data = sns.load_dataset("flights")
 
